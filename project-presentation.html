@@ -1,0 +1,656 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Upastithi - Smart Attendance Management System</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+        .slide {
+            width: 100vw;
+            height: 100vh;
+            display: none;
+            padding: 60px;
+            box-sizing: border-box;
+            color: white;
+            position: relative;
+        }
+        .slide.active {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        .slide h1 {
+            font-size: 3.5em;
+            margin-bottom: 30px;
+            text-align: center;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        .slide h2 {
+            font-size: 2.5em;
+            margin-bottom: 25px;
+            color: #FFD700;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+        }
+        .slide h3 {
+            font-size: 1.8em;
+            margin-bottom: 15px;
+            color: #87CEEB;
+        }
+        .slide p, .slide li {
+            font-size: 1.3em;
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+        .slide ul {
+            padding-left: 30px;
+        }
+        .tech-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 30px;
+            margin-top: 30px;
+        }
+        .tech-card {
+            background: rgba(255,255,255,0.1);
+            padding: 25px;
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+            margin-top: 30px;
+        }
+        .feature-card {
+            background: rgba(255,255,255,0.15);
+            padding: 20px;
+            border-radius: 12px;
+            text-align: center;
+            backdrop-filter: blur(5px);
+        }
+        .navigation {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            z-index: 1000;
+        }
+        .nav-btn {
+            background: rgba(255,255,255,0.2);
+            border: none;
+            color: white;
+            padding: 12px 20px;
+            margin: 0 5px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 16px;
+            backdrop-filter: blur(10px);
+        }
+        .nav-btn:hover {
+            background: rgba(255,255,255,0.3);
+        }
+        .slide-counter {
+            position: fixed;
+            bottom: 30px;
+            left: 30px;
+            color: white;
+            font-size: 18px;
+        }
+        .architecture-diagram {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            margin: 30px 0;
+        }
+        .arch-box {
+            background: rgba(255,255,255,0.2);
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            min-width: 150px;
+        }
+        .arrow {
+            font-size: 2em;
+            color: #FFD700;
+        }
+    </style>
+</head>
+<body>
+    <!-- Slide 1: Title -->
+    <div class="slide active">
+        <h1>🎓 UPASTITHI</h1>
+        <div style="text-align: center; margin-top: 50px;">
+            <h2>Smart Attendance Management System</h2>
+            <p style="font-size: 1.5em; margin-top: 40px;">AI-Powered • Real-time • Comprehensive</p>
+            <p style="font-size: 1.2em; margin-top: 30px; opacity: 0.8;">Revolutionizing Educational Institution Management</p>
+        </div>
+    </div>
+
+    <!-- Slide 2: Project Overview -->
+    <div class="slide">
+        <h2>📋 Project Overview</h2>
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 40px; margin-top: 30px;">
+            <div>
+                <h3>🎯 Purpose</h3>
+                <ul>
+                    <li>Automate attendance tracking using AI face recognition</li>
+                    <li>Streamline timetable and subject management</li>
+                    <li>Provide comprehensive admin dashboard</li>
+                    <li>Generate detailed attendance reports</li>
+                </ul>
+            </div>
+            <div>
+                <h3>👥 Target Users</h3>
+                <ul>
+                    <li><strong>Administrators:</strong> System management</li>
+                    <li><strong>Faculty:</strong> Attendance tracking</li>
+                    <li><strong>Students:</strong> Attendance monitoring</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 3: Key Features -->
+    <div class="slide">
+        <h2>✨ Key Features</h2>
+        <div class="feature-grid">
+            <div class="feature-card">
+                <h3>🤖 AI Face Recognition</h3>
+                <p>Automated attendance using advanced facial recognition technology</p>
+            </div>
+            <div class="feature-card">
+                <h3>📅 Timetable Management</h3>
+                <p>Complete scheduling system with conflict detection</p>
+            </div>
+            <div class="feature-card">
+                <h3>👨‍🏫 User Management</h3>
+                <p>Role-based access for admins, faculty, and students</p>
+            </div>
+            <div class="feature-card">
+                <h3>📊 Real-time Reports</h3>
+                <p>Comprehensive attendance analytics and insights</p>
+            </div>
+            <div class="feature-card">
+                <h3>🔐 Secure Authentication</h3>
+                <p>JWT-based authentication with role permissions</p>
+            </div>
+            <div class="feature-card">
+                <h3>📱 Responsive Design</h3>
+                <p>Modern UI that works on all devices</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 4: Technology Stack -->
+    <div class="slide">
+        <h2>🛠️ Technology Stack</h2>
+        <div class="tech-grid">
+            <div class="tech-card">
+                <h3>Frontend</h3>
+                <ul>
+                    <li><strong>React 18</strong> - Modern UI framework</li>
+                    <li><strong>TypeScript</strong> - Type safety</li>
+                    <li><strong>Tailwind CSS</strong> - Styling</li>
+                    <li><strong>Vite</strong> - Build tool</li>
+                    <li><strong>Lucide React</strong> - Icons</li>
+                </ul>
+            </div>
+            <div class="tech-card">
+                <h3>Backend</h3>
+                <ul>
+                    <li><strong>Node.js</strong> - Runtime environment</li>
+                    <li><strong>Express.js</strong> - Web framework</li>
+                    <li><strong>MongoDB</strong> - Database</li>
+                    <li><strong>Mongoose</strong> - ODM</li>
+                    <li><strong>JWT</strong> - Authentication</li>
+                </ul>
+            </div>
+            <div class="tech-card">
+                <h3>AI/ML</h3>
+                <ul>
+                    <li><strong>Python</strong> - AI processing</li>
+                    <li><strong>OpenCV</strong> - Computer vision</li>
+                    <li><strong>Face Recognition</strong> - ML library</li>
+                    <li><strong>InsightFace</strong> - Face detection</li>
+                </ul>
+            </div>
+            <div class="tech-card">
+                <h3>Tools & Others</h3>
+                <ul>
+                    <li><strong>Git</strong> - Version control</li>
+                    <li><strong>VS Code</strong> - IDE</li>
+                    <li><strong>Postman</strong> - API testing</li>
+                    <li><strong>ESLint</strong> - Code quality</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 5: System Architecture -->
+    <div class="slide">
+        <h2>🏗️ System Architecture</h2>
+        <div class="architecture-diagram">
+            <div class="arch-box">
+                <h3>Frontend</h3>
+                <p>React + TypeScript</p>
+                <p>User Interface</p>
+            </div>
+            <div class="arrow">→</div>
+            <div class="arch-box">
+                <h3>Backend API</h3>
+                <p>Node.js + Express</p>
+                <p>Business Logic</p>
+            </div>
+            <div class="arrow">→</div>
+            <div class="arch-box">
+                <h3>Database</h3>
+                <p>MongoDB</p>
+                <p>Data Storage</p>
+            </div>
+        </div>
+        <div class="architecture-diagram" style="margin-top: 50px;">
+            <div class="arch-box">
+                <h3>AI Engine</h3>
+                <p>Python + OpenCV</p>
+                <p>Face Recognition</p>
+            </div>
+            <div class="arrow">↕</div>
+            <div class="arch-box">
+                <h3>Camera Feed</h3>
+                <p>Real-time Video</p>
+                <p>Face Detection</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 6: Database Schema -->
+    <div class="slide">
+        <h2>🗄️ Database Schema</h2>
+        <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 30px; margin-top: 30px;">
+            <div class="tech-card">
+                <h3>Users Collection</h3>
+                <ul>
+                    <li>username, email, password</li>
+                    <li>role (admin/faculty/student)</li>
+                    <li>department, division, semester</li>
+                    <li>enrollmentNumber, employeeId</li>
+                </ul>
+            </div>
+            <div class="tech-card">
+                <h3>Subjects Collection</h3>
+                <ul>
+                    <li>name, code, department</li>
+                    <li>credits, semester</li>
+                    <li>facultyId, description</li>
+                </ul>
+            </div>
+            <div class="tech-card">
+                <h3>Timetable Collection</h3>
+                <ul>
+                    <li>day, time, duration</li>
+                    <li>subjectId, faculty</li>
+                    <li>division, room, department</li>
+                </ul>
+            </div>
+            <div class="tech-card">
+                <h3>Attendance Collection</h3>
+                <ul>
+                    <li>student, subject, faculty</li>
+                    <li>date, status, sessionId</li>
+                    <li>detectionConfidence</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 7: User Roles & Permissions -->
+    <div class="slide">
+        <h2>👤 User Roles & Permissions</h2>
+        <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; margin-top: 40px;">
+            <div class="tech-card">
+                <h3>🔧 Administrator</h3>
+                <ul>
+                    <li>Manage all users</li>
+                    <li>Create/edit subjects</li>
+                    <li>Manage timetables</li>
+                    <li>View all reports</li>
+                    <li>System configuration</li>
+                </ul>
+            </div>
+            <div class="tech-card">
+                <h3>👨‍🏫 Faculty</h3>
+                <ul>
+                    <li>Start/end attendance sessions</li>
+                    <li>View assigned subjects</li>
+                    <li>Mark attendance manually</li>
+                    <li>Generate class reports</li>
+                    <li>View personal schedule</li>
+                </ul>
+            </div>
+            <div class="tech-card">
+                <h3>🎓 Student</h3>
+                <ul>
+                    <li>View personal attendance</li>
+                    <li>Check timetable</li>
+                    <li>Update profile</li>
+                    <li>View attendance history</li>
+                    <li>Download reports</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 8: AI Face Recognition -->
+    <div class="slide">
+        <h2>🤖 AI Face Recognition System</h2>
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 40px; margin-top: 30px;">
+            <div>
+                <h3>🔍 How It Works</h3>
+                <ul>
+                    <li><strong>Face Detection:</strong> Identify faces in camera feed</li>
+                    <li><strong>Feature Extraction:</strong> Create unique face embeddings</li>
+                    <li><strong>Recognition:</strong> Match against stored student data</li>
+                    <li><strong>Attendance Marking:</strong> Automatic attendance logging</li>
+                </ul>
+            </div>
+            <div>
+                <h3>⚙️ Technical Implementation</h3>
+                <ul>
+                    <li><strong>OpenCV:</strong> Image processing</li>
+                    <li><strong>InsightFace:</strong> Face detection model</li>
+                    <li><strong>Face Recognition:</strong> Python library</li>
+                    <li><strong>Real-time Processing:</strong> Live camera feed</li>
+                </ul>
+            </div>
+        </div>
+        <div style="margin-top: 40px; text-align: center;">
+            <h3>📊 Accuracy & Performance</h3>
+            <p>High accuracy face recognition with confidence scoring and duplicate detection prevention</p>
+        </div>
+    </div>
+
+    <!-- Slide 9: API Endpoints -->
+    <div class="slide">
+        <h2>🔗 API Endpoints</h2>
+        <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 30px; margin-top: 30px;">
+            <div class="tech-card">
+                <h3>Authentication</h3>
+                <ul>
+                    <li>POST /api/auth/login</li>
+                    <li>POST /api/auth/register</li>
+                    <li>GET /api/auth/me</li>
+                    <li>POST /api/auth/logout</li>
+                </ul>
+            </div>
+            <div class="tech-card">
+                <h3>Users Management</h3>
+                <ul>
+                    <li>GET /api/users</li>
+                    <li>GET /api/users/students</li>
+                    <li>GET /api/users/faculty</li>
+                    <li>PUT /api/users/profile</li>
+                </ul>
+            </div>
+            <div class="tech-card">
+                <h3>Subjects</h3>
+                <ul>
+                    <li>GET /api/subjects</li>
+                    <li>POST /api/subjects</li>
+                    <li>PUT /api/subjects/:id</li>
+                    <li>DELETE /api/subjects/:id</li>
+                </ul>
+            </div>
+            <div class="tech-card">
+                <h3>Timetable</h3>
+                <ul>
+                    <li>GET /api/timetable</li>
+                    <li>POST /api/timetable</li>
+                    <li>PUT /api/timetable/:id</li>
+                    <li>DELETE /api/timetable/:id</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 10: Security Features -->
+    <div class="slide">
+        <h2>🔐 Security Features</h2>
+        <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 40px; margin-top: 40px;">
+            <div>
+                <h3>🛡️ Authentication & Authorization</h3>
+                <ul>
+                    <li><strong>JWT Tokens:</strong> Secure session management</li>
+                    <li><strong>Password Hashing:</strong> bcrypt encryption</li>
+                    <li><strong>Role-based Access:</strong> Permission control</li>
+                    <li><strong>Token Expiration:</strong> Automatic logout</li>
+                </ul>
+            </div>
+            <div>
+                <h3>🔒 Data Protection</h3>
+                <ul>
+                    <li><strong>Input Validation:</strong> Prevent injection attacks</li>
+                    <li><strong>CORS Configuration:</strong> Cross-origin security</li>
+                    <li><strong>Data Sanitization:</strong> Clean user inputs</li>
+                    <li><strong>Secure Headers:</strong> HTTP security headers</li>
+                </ul>
+            </div>
+        </div>
+        <div style="margin-top: 50px; text-align: center;">
+            <h3>🔐 Privacy Compliance</h3>
+            <p>Face recognition data is processed locally and stored securely with encryption</p>
+        </div>
+    </div>
+
+    <!-- Slide 11: Recent Bug Fixes -->
+    <div class="slide">
+        <h2>🐛 Recent Bug Fixes & Improvements</h2>
+        <div style="margin-top: 30px;">
+            <h3>🔧 Critical Issues Resolved</h3>
+            <div class="tech-card" style="margin: 20px 0;">
+                <h3>500 Internal Server Error Fix</h3>
+                <ul>
+                    <li>Removed incorrect API call in backend route</li>
+                    <li>Fixed undefined variable references</li>
+                    <li>Enabled proper validation error handling</li>
+                </ul>
+            </div>
+            <div class="tech-card" style="margin: 20px 0;">
+                <h3>400 Bad Request Error Fix</h3>
+                <ul>
+                    <li>Fixed ObjectId validation issues</li>
+                    <li>Added toJSON transforms for MongoDB compatibility</li>
+                    <li>Corrected frontend data structure</li>
+                </ul>
+            </div>
+            <div class="tech-card" style="margin: 20px 0;">
+                <h3>Database Improvements</h3>
+                <ul>
+                    <li>Updated MongoDB connection configuration</li>
+                    <li>Added proper indexing for performance</li>
+                    <li>Implemented data validation schemas</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 12: Future Enhancements -->
+    <div class="slide">
+        <h2>🚀 Future Enhancements</h2>
+        <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 40px; margin-top: 40px;">
+            <div>
+                <h3>📱 Mobile Application</h3>
+                <ul>
+                    <li>React Native mobile app</li>
+                    <li>Push notifications</li>
+                    <li>Offline capability</li>
+                    <li>QR code attendance</li>
+                </ul>
+            </div>
+            <div>
+                <h3>🤖 Advanced AI Features</h3>
+                <ul>
+                    <li>Emotion detection</li>
+                    <li>Behavior analysis</li>
+                    <li>Predictive analytics</li>
+                    <li>Smart recommendations</li>
+                </ul>
+            </div>
+            <div>
+                <h3>📊 Enhanced Analytics</h3>
+                <ul>
+                    <li>Advanced reporting dashboard</li>
+                    <li>Data visualization charts</li>
+                    <li>Export to multiple formats</li>
+                    <li>Automated report generation</li>
+                </ul>
+            </div>
+            <div>
+                <h3>🔗 Integration Features</h3>
+                <ul>
+                    <li>LMS integration</li>
+                    <li>Email notifications</li>
+                    <li>SMS alerts</li>
+                    <li>Third-party APIs</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 13: Project Benefits -->
+    <div class="slide">
+        <h2>💡 Project Benefits</h2>
+        <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 40px; margin-top: 40px;">
+            <div>
+                <h3>🏫 For Institutions</h3>
+                <ul>
+                    <li><strong>Time Saving:</strong> Automated attendance process</li>
+                    <li><strong>Accuracy:</strong> Eliminate manual errors</li>
+                    <li><strong>Cost Effective:</strong> Reduce administrative overhead</li>
+                    <li><strong>Data Insights:</strong> Better decision making</li>
+                </ul>
+            </div>
+            <div>
+                <h3>👨‍🏫 For Faculty</h3>
+                <ul>
+                    <li><strong>Efficiency:</strong> Quick attendance marking</li>
+                    <li><strong>Real-time Data:</strong> Instant attendance reports</li>
+                    <li><strong>Less Paperwork:</strong> Digital record keeping</li>
+                    <li><strong>Better Tracking:</strong> Student progress monitoring</li>
+                </ul>
+            </div>
+            <div>
+                <h3>🎓 For Students</h3>
+                <ul>
+                    <li><strong>Transparency:</strong> Real-time attendance status</li>
+                    <li><strong>Convenience:</strong> No manual sign-in required</li>
+                    <li><strong>Accuracy:</strong> Precise attendance records</li>
+                    <li><strong>Accessibility:</strong> 24/7 data access</li>
+                </ul>
+            </div>
+            <div>
+                <h3>📈 Overall Impact</h3>
+                <ul>
+                    <li><strong>Modernization:</strong> Digital transformation</li>
+                    <li><strong>Scalability:</strong> Handles large institutions</li>
+                    <li><strong>Reliability:</strong> Consistent performance</li>
+                    <li><strong>Innovation:</strong> Cutting-edge technology</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 14: Conclusion -->
+    <div class="slide">
+        <h2>🎯 Conclusion</h2>
+        <div style="text-align: center; margin-top: 50px;">
+            <h3>✅ Project Achievements</h3>
+            <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 40px; margin: 40px 0;">
+                <div class="tech-card">
+                    <h3>Technical Success</h3>
+                    <ul>
+                        <li>Full-stack web application</li>
+                        <li>AI-powered face recognition</li>
+                        <li>Scalable architecture</li>
+                        <li>Modern tech stack</li>
+                    </ul>
+                </div>
+                <div class="tech-card">
+                    <h3>Functional Success</h3>
+                    <ul>
+                        <li>Complete attendance system</li>
+                        <li>User management</li>
+                        <li>Real-time processing</li>
+                        <li>Comprehensive reporting</li>
+                    </ul>
+                </div>
+            </div>
+            <h3 style="color: #FFD700; margin-top: 50px;">🌟 UPASTITHI - Transforming Education Through Technology</h3>
+            <p style="font-size: 1.4em; margin-top: 30px;">Smart • Efficient • Future-Ready</p>
+        </div>
+    </div>
+
+    <!-- Slide 15: Thank You -->
+    <div class="slide">
+        <div style="text-align: center; height: 100%; display: flex; flex-direction: column; justify-content: center;">
+            <h1 style="font-size: 4em; margin-bottom: 50px;">🙏 Thank You</h1>
+            <h2 style="color: #FFD700;">Questions & Discussion</h2>
+            <div style="margin-top: 60px; font-size: 1.2em;">
+                <p>📧 Contact: your-email@example.com</p>
+                <p>🌐 GitHub: github.com/your-username/upastithi</p>
+                <p>💼 LinkedIn: linkedin.com/in/your-profile</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="navigation">
+        <button class="nav-btn" onclick="previousSlide()">← Previous</button>
+        <button class="nav-btn" onclick="nextSlide()">Next →</button>
+    </div>
+
+    <div class="slide-counter">
+        <span id="current-slide">1</span> / <span id="total-slides">15</span>
+    </div>
+
+    <script>
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.slide');
+        const totalSlides = slides.length;
+        
+        document.getElementById('total-slides').textContent = totalSlides;
+
+        function showSlide(n) {
+            slides[currentSlide].classList.remove('active');
+            currentSlide = (n + totalSlides) % totalSlides;
+            slides[currentSlide].classList.add('active');
+            document.getElementById('current-slide').textContent = currentSlide + 1;
+        }
+
+        function nextSlide() {
+            showSlide(currentSlide + 1);
+        }
+
+        function previousSlide() {
+            showSlide(currentSlide - 1);
+        }
+
+        // Keyboard navigation
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'ArrowRight' || e.key === ' ') {
+                nextSlide();
+            } else if (e.key === 'ArrowLeft') {
+                previousSlide();
+            }
+        });
+
+        // Auto-advance slides (optional)
+        // setInterval(nextSlide, 10000); // Uncomment for auto-advance every 10 seconds
+    </script>
+</body>
+</html>
